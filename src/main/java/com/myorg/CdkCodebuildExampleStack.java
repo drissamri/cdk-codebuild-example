@@ -9,8 +9,11 @@ import software.amazon.awscdk.services.iam.Role;
 import software.amazon.awscdk.services.iam.ServicePrincipal;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import static com.myorg.CdkMap.map;
+import static java.util.Arrays.asList;
 import static software.amazon.awscdk.services.iam.ManagedPolicy.fromAwsManagedPolicyName;
 
 public class CdkCodebuildExampleStack extends Stack {
@@ -20,7 +23,6 @@ public class CdkCodebuildExampleStack extends Stack {
 
     public CdkCodebuildExampleStack(final Construct scope, final String id, final StackProps props) {
         super(scope, id, props);
-
 
 
         BuildEnvironment environment = BuildEnvironment.builder()
@@ -38,7 +40,15 @@ public class CdkCodebuildExampleStack extends Stack {
                 .projectName("cdk-codebuild")
                 .description("Sample Project using AWS CDK")
                 .role(role)
-                .buildSpec(BuildSpec.fromSourceFilename("buildspec.yml"))
+                .buildSpec(BuildSpec.fromObject(map().
+                        // @formatter:off
+                                with("version", "0.2")
+                        .with("phases", map().
+                                with("build", map().
+                                        with("commands", "echo 'Hello, CodeBuild!'"))
+                                )
+                        ))
+                        // @formatter:on
                 .environment(environment)
                 .timeout(Duration.minutes(10))
                 .build();
