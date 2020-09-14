@@ -18,6 +18,7 @@ It is a [Maven](https://maven.apache.org/) based project, so you can open this p
 Enjoy!
 
 ------
+```
 [ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:1.6.0:java (default-cli) on project cdk-codebuild-example: An exception occured while executing the Java class. If the Project's source is NoSource, you need to provide a concrete buildSpec
 [ERROR] Error: If the Project's source is NoSource, you need to provide a concrete buildSpec
 [ERROR]     at new Project (/private/var/folders/xh/09pnvx9n24q3fzdxnymtk7cm0000gn/T/jsii-kernel-dMgS7T/node_modules/@aws-cdk/aws-codebuild/lib/project.js:265:19)
@@ -30,3 +31,4 @@ Enjoy!
 [ERROR]     at Immediate._onImmediate (/private/var/folders/xh/09pnvx9n24q3fzdxnymtk7cm0000gn/T/jsii-java-runtime7503747261229891135/jsii-runtime.js:7397:37)
 [ERROR]     at processImmediate (internal/timers.js:439:21)
 [ERROR] -> [Help 1]
+```
